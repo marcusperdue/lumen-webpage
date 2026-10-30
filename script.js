@@ -1,0 +1,3 @@
+const nav=document.querySelector('.nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.15});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const hero=document.querySelector('.hero'),video=hero.querySelector('video');addEventListener('scroll',()=>{if(scrollY<innerHeight*1.2&&!matchMedia('(prefers-reduced-motion: reduce)').matches){video.style.transform=`scale(${1.03+scrollY/innerHeight*.06}) translateY(${scrollY*.08}px)`}},{passive:true});
